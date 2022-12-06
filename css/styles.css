@@ -306,6 +306,9 @@ body {
 .xmb-main .xmb-title.settings .xmb-contents .submenu.one.inactive .subtext {
   opacity: 0;
 }
+.xmb-main .xmb-title.settings .xmb-contents .submenu.one.inactive.one.gotop {
+  margin-top: -600px;
+}
 .xmb-main .xmb-title.settings .xmb-contents .submenu.two #disptext {
   position: absolute;
   margin-left: 10px;
@@ -333,6 +336,47 @@ body {
   }
 }
 .xmb-main .xmb-title.settings .xmb-contents .submenu.two.active .subtext {
+  opacity: 1;
+}
+.xmb-main .xmb-title.settings .xmb-contents .submenu.three {
+  margin-top: 20px;
+}
+.xmb-main .xmb-title.settings .xmb-contents .submenu.three .subtext {
+  opacity: 0;
+  position: absolute;
+  margin-left: 10px;
+  margin-top: 13px;
+  font-size: 16px;
+  color: white;
+}
+.xmb-main .xmb-title.settings .xmb-contents .submenu.three #systext {
+  position: absolute;
+  margin-top: -20px;
+  margin-left: 10px;
+  font-size: 1.5rem;
+}
+.xmb-main .xmb-title.settings .xmb-contents .submenu.three img {
+  scale: 0.7;
+}
+.xmb-main .xmb-title.settings .xmb-contents .submenu.three.active {
+  margin-top: 230px;
+}
+.xmb-main .xmb-title.settings .xmb-contents .submenu.three.active img {
+  scale: 1;
+}
+.xmb-main .xmb-title.settings .xmb-contents .submenu.three.active #systext {
+  -webkit-animation: glow 1s ease-in-out infinite alternate;
+          animation: glow 1s ease-in-out infinite alternate;
+}
+@keyframes glow {
+  from {
+    text-shadow: 0 0 1px #d3d3d3, 0 0 2px #acacac, 0 0 2px #b1afaf, 0 0 5px #9b9b9b;
+  }
+  to {
+    text-shadow: 0 0 5px #dfdfdf, 0 0 8px #c9c9c9, 0 0 15px #b6b6b4, 0 0 20px #b9b9b9;
+  }
+}
+.xmb-main .xmb-title.settings .xmb-contents .submenu.three.active .subtext {
   opacity: 1;
 }
 .xmb-main .xmb-title.messages {

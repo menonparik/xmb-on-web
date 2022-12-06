@@ -7,6 +7,7 @@ const homeSection = document.querySelectorAll(".xmb-title.homeMenu")[0]
 const projectsSection = document.querySelectorAll(".xmb-title.settings")[0]
 const submenuOne = document.querySelectorAll(".submenu.one")
 const submenuTwo = document.querySelectorAll(".submenu.two")
+const submenuThree = document.querySelectorAll(".submenu.three")
 const projectImage = document.querySelectorAll(".infowrapper")
 // const projectInfo = document.querySelectorAll(".projectinfo")
 const closeButton = document.getElementById("close") 
@@ -18,6 +19,11 @@ const navSound = document.getElementById("nav")
 let isHome = true
 let isProjects = false
 let isContact = false
+let isSubOne = true
+let isSubTwo = false
+let isSubThree = false
+let sectionNumber = 0
+let multiSection = 0
 contactSection.style.marginLeft = '90px'
 startupSound.play()
 
@@ -69,6 +75,7 @@ let loadMenu = async () =>{
 }
 
 let focusHome =  () =>{
+    sectionNumber = 0
     isHome = true
     isProjects = false
     projectsSection.classList.remove("active")
@@ -82,9 +89,12 @@ let focusHome =  () =>{
         homeSection.classList.add("inactive")
     }
     console.log("in home")
+    console.log("section number is now 0")
 }
 
 let focusProjects = () => { 
+    sectionNumber = 1
+    multiSection = 0
     isHome = false
     isProjects = true
     projectsSection.classList.add("active")
@@ -94,41 +104,81 @@ let focusProjects = () => {
         contactSection.classList.remove("active")
     }
     console.log("in projects")
+    console.log("section number is now 1")
 }
 
 let focusContacts = () => {
+    sectionNumber = 2
     isHome = false
     isProjects = false
     isContact = true
     projectsSection.classList.remove("active")
     contactSection.classList.add("active")
     console.log("in Contacts")
+    console.log("section number is now 2")
+}
+
+let focusSubOne = () =>{
+    isSubOne = true
+    isSubTwo = false
+    isSubThree = false
+    submenuTwo[sectionNumber].classList.remove("active")
+    submenuOne[sectionNumber].classList.remove("inactive")
+    console.log(isSubOne)
+}
+
+let focusSubTwo = () =>{
+    if(sectionNumber === 1){
+        if (isSubThree) {
+            submenuThree[multiSection].classList.remove("active")
+            submenuOne[sectionNumber].classList.remove("gotop")
+        }
+    }
+    isSubOne = false
+    isSubTwo = true
+    isSubThree = false
+    submenuTwo[sectionNumber].classList.add("active")
+    submenuOne[sectionNumber].classList.add("inactive")
+    console.log(isSubOne)
+}
+
+let focusSubThree = () =>{
+    if(sectionNumber === 1){
+        isSubThree = true
+        isSubOne = false
+        isSubTwo = false
+        submenuThree[multiSection].classList.add("active")
+        submenuTwo[sectionNumber].classList.remove("active")
+        submenuOne[sectionNumber].classList.add("gotop")
+        console.log(isSubOne)
+    }
 }
 
 document.body.addEventListener('keydown', (e) =>{
     if(e.key === 'ArrowDown'){
         navSound.play()
         e.preventDefault()
-        submenuOne.forEach(sub => {
-            sub.classList.toggle("inactive")
-        });
+        if(isSubOne && !isSubTwo){
+            focusSubTwo()
+        }
 
-        submenuTwo.forEach(sub =>{
-            sub.classList.toggle("active")
-        })
-        e.stopPropagation()
+        else if(sectionNumber === 1){
+            if (isSubTwo && !isSubOne) {
+                focusSubThree()
+            }
+        } 
     }
 
     else if(e.key === 'ArrowUp'){
         navSound.play()
         e.preventDefault()
-        submenuOne.forEach(sub => {
-            sub.classList.remove("inactive")
-        });
-        submenuTwo.forEach(sub => {
-            sub.classList.remove("active")
-        })
-        e.stopPropagation()
+        if(isSubThree && !isSubOne){
+            focusSubTwo()
+        }
+
+        else if(isSubTwo && !isSubOne){
+            focusSubOne()
+        }
     }
 
     else if(e.key === 'ArrowRight'){
@@ -155,7 +205,7 @@ document.body.addEventListener('keydown', (e) =>{
             projectsSection.style.marginLeft = null
         }
 
-        else if(isProjects){
+        else if(isProjects && !isHome){
             focusHome()
             homeSection.classList.remove("inactive")
             xmbMain.style.marginRight = '40%'

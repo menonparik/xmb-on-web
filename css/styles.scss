@@ -212,19 +212,6 @@ body{
                     img{
                         scale: 0.7;
                     }
-
-                    // .resumeviewer{
-                    //         @include bgStyling;
-                    //         background-color: black;
-                    //         opacity: 0;                          
-
-                    //         iframe{
-                    //             margin-top: 20%;
-                    //             margin-left: 40%;
-                    //         }
-                    //         z-index: -2;
-                    // }
-
                     &.active{
                         margin-top: 235px;
                         #twotext{
@@ -234,11 +221,6 @@ body{
                             transition: scale 100ms ease-in-out;
                             scale: 1.0;
                         }
-
-                        // .resumeviewer{
-                        //     opacity: 1;
-                        //     z-index: -1;
-                        // }
                     }
                 }
             }
@@ -368,6 +350,9 @@ body{
                     }
                     &.one.inactive{
                         @include scrollDown;
+                        &.one.gotop{
+                            margin-top:-600px;
+                        }
                     }
 
                     &.two{
@@ -385,29 +370,53 @@ body{
                             color: white;
                             opacity: 0;
                         }
-                    }
-                    &.two.active{
-                        #disptext{
-                             @include glowKeyframes;
-                        }
-                        .subtext{
-                            opacity: 1;
-                        }
-                    }
 
-                    // &.three{
-                    //     #systext{
-                    //         margin-left: 20px;
-                    //     }
-                    //     .subtext{
-                    //         position: absolute;
-                    //         margin-left: 10px;
-                    //         margin-top: 13px;
-                    //         font-size: 16px;
-                    //         color: white;
-                    //         opacity: 0;
-                    //     }
-                    // }
+                        &.active{
+                               #disptext{
+                                    @include glowKeyframes;
+                                }
+                               
+                                .subtext{
+                                    opacity: 1;
+                                }
+                        }
+                    }
+                
+                    &.three{
+                        margin-top: 20px;
+                        .subtext{
+                            opacity: 0;
+                            position: absolute;
+                            margin-left: 10px;
+                            margin-top: 13px;
+                            font-size: 16px;
+                            color: white;
+                        }
+
+                        #systext{
+                            position: absolute;
+                            margin-top: -20px;
+                            margin-left: 10px;
+                            font-size: 1.5rem;
+                        }
+
+                        img{
+                            scale: 0.7;
+                        }
+
+                        &.active{
+                            margin-top: 230px;
+                            img{
+                                scale: 1.0;
+                            }
+                            #systext{
+                                @include glowKeyframes;
+                            }
+                            .subtext{
+                                opacity: 1;
+                            }
+                        }
+                    }
                 }
             }
         }
