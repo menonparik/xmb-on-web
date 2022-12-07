@@ -3,26 +3,29 @@
 @mixin displayInactive{
      img{
          scale: 0.8;
+         opacity: 0.6;
      }
      
      .titletext{
          display: none;
      }
      .xmb-contents{
-         display:none;
+         opacity: 0;
+         transition: opacity 0.1s ease-in-out;
      } 
 }
 
 @mixin displayActive{
     img{
          scale: 1.0;
+         opacity: 0.85;
      }
      
      .titletext{
          display: inherit;
      }
      .xmb-contents{
-         display: inherit;
+         opacity: 1;
      } 
 }
 
@@ -51,8 +54,8 @@
 }
 
 @mixin scrollDown{
-    margin-top: -300px;
-    margin-bottom: 200px;
+    margin-top: -250px;
+    margin-bottom: 0px;
     .subtext{
         opacity: 0;
     }
@@ -63,4 +66,20 @@
     @keyframes pop{
         50%  {transform: scale(1.1);}
     }
+}
+
+@mixin subTextStyling{
+     position: absolute;
+     margin-left: 10px;
+     margin-top: 10px;
+     font-size: 14px;
+     letter-spacing: .3px;
+     color: #dadada;
+}
+
+@mixin subTitleStyling{
+    position: absolute;
+    margin-left: 10px;
+    margin-top: -20px;
+    font-size: 1.5rem;
 }

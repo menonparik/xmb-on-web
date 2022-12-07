@@ -5,13 +5,15 @@ const menu = document.getElementById("menu")
 const xmbMain = document.querySelectorAll(".xmb-main")[0]
 const homeSection = document.querySelectorAll(".xmb-title.homeMenu")[0]
 const projectsSection = document.querySelectorAll(".xmb-title.settings")[0]
+const contactSection = document.querySelectorAll(".xmb-title.messages")[0]
+const musicSection = document.querySelectorAll(".xmb-title.music")[0]
+const videoSection = document.querySelectorAll(".xmb-title.videos")[0]
+const gameSection = document.querySelectorAll(".xmb-title.games")[0]
 const submenuOne = document.querySelectorAll(".submenu.one")
 const submenuTwo = document.querySelectorAll(".submenu.two")
 const submenuThree = document.querySelectorAll(".submenu.three")
 const projectImage = document.querySelectorAll(".infowrapper")
-// const projectInfo = document.querySelectorAll(".projectinfo")
 const closeButton = document.getElementById("close") 
-const contactSection = document.querySelectorAll(".xmb-title.messages")[0]
 const section = document.querySelectorAll(".xmb-title")
 const startupSound = document.getElementById("startup")
 const navSound = document.getElementById("nav")
@@ -19,6 +21,9 @@ const navSound = document.getElementById("nav")
 let isHome = true
 let isProjects = false
 let isContact = false
+let isMusic = false
+let isVideo = false
+let isGame = false
 let isSubOne = true
 let isSubTwo = false
 let isSubThree = false
@@ -114,8 +119,53 @@ let focusContacts = () => {
     isContact = true
     projectsSection.classList.remove("active")
     contactSection.classList.add("active")
+    if(isMusic){
+        musicSection.classList.remove("active")
+    }
     console.log("in Contacts")
     console.log("section number is now 2")
+}
+
+let focusMusic = () =>{
+    sectionNumber = 3
+    isHome = false
+    isProjects = false
+    isContact = false
+    isMusic = true
+    contactSection.classList.remove("active")
+    musicSection.classList.add("active")
+    if(isVideo){
+        videoSection.classList.remove("active")
+    }
+    console.log("in Music")
+}
+
+let focusVideo = () =>{
+    sectionNumber = 4
+    isHome = false
+    isProjects = false
+    isContact = false
+    isMusic = false
+    isVideo = true
+    musicSection.classList.remove("active")
+    videoSection.classList.add("active")
+    if(isGame){
+        gameSection.classList.remove("active")
+    }
+    console.log("in video")
+}
+
+let focusGame = () =>{
+    sectionNumber = 5
+    isHome = false
+    isProjects = false
+    isContact = false
+    isMusic = false
+    isVideo = false
+    isGame = true
+    videoSection.classList.remove("active")
+    gameSection.classList.add("active")
+    console.log("in video")
 }
 
 let focusSubOne = () =>{
@@ -158,7 +208,8 @@ document.body.addEventListener('keydown', (e) =>{
     if(e.key === 'ArrowDown'){
         navSound.play()
         e.preventDefault()
-        if(isSubOne && !isSubTwo){
+        isSubOne = false
+        if(!isSubTwo){
             focusSubTwo()
         }
 
@@ -186,51 +237,59 @@ document.body.addEventListener('keydown', (e) =>{
         e.preventDefault()
         if(isHome && !isProjects){
             focusProjects()
-            xmbMain.style.marginRight = '58%'
+            xmbMain.style.marginRight = '18%'
         }
         else if(isProjects && !isHome){
             focusContacts()
-            xmbMain.style.marginRight = '78%'
-            projectsSection.style.marginLeft = '70px'
-            contactSection.style.marginLeft = '50px'
+            xmbMain.style.marginRight = '35%'
+        }
+
+        else if(isContact && !isProjects){
+            focusMusic()
+            xmbMain.style.marginRight = '57%'
+        }
+
+        else if(isMusic && !isContact){
+            focusVideo()
+            xmbMain.style.marginRight = '77%'
+        }
+
+        else if(isVideo && !isMusic){
+            focusGame()
+            xmbMain.style.marginRight = '97%'
         }
     }
 
     else if(e.key === 'ArrowLeft'){
         navSound.play()
         e.preventDefault()
-        if(isContact && !isProjects){
+        if(isGame && !isVideo){
+            focusVideo()
+            xmbMain.style.marginRight = '77%'
+        }
+
+        else if(isVideo && !isMusic){
+            focusMusic()
+            xmbMain.style.marginRight = '57%'
+        }
+
+        else if(isMusic && !isContact){
+            focusContacts()
+            xmbMain.style.marginRight = '35%'
+        }
+
+        else if(isContact && !isProjects){
             focusProjects()
-            xmbMain.style.marginRight = '58%'
+            xmbMain.style.marginRight = '18%'
             projectsSection.style.marginLeft = null
         }
 
         else if(isProjects && !isHome){
             focusHome()
             homeSection.classList.remove("inactive")
-            xmbMain.style.marginRight = '40%'
+            xmbMain.style.marginRight = null
         }
     }
 })
-
-
-// projectImage[1].addEventListener('click', () =>{
-//     projectInfo[0].classList.toggle("active")
-//     section.forEach(ele => {
-//         ele.style.zIndex = 'auto'
-//     });
-//     // document.querySelectorAll(".xmb-title")[0].style.zIndex = 'auto'
-//     console.log("clicked")
-// })
-
-// closeButton.addEventListener('click', () =>{
-//     projectInfo.forEach(project => {
-//         project.classList.remove("active")
-//     });
-
-//     section.forEach(ele =>{
-//         ele.style.zIndex = '2'
-//     })
-// })
 
 loadMenu()

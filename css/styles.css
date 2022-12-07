@@ -91,8 +91,8 @@ body {
   display: flex;
   justify-content: center;
   text-align: center;
-  margin-top: 12%;
-  margin-right: 40%;
+  margin-top: 10%;
+  margin-right: 0;
   color: #dadada;
   transition: margin-right 300ms;
   z-index: -2;
@@ -192,8 +192,9 @@ body {
 }
 .xmb-main .xmb-title .xmb-contents .submenu.one.inactive {
   transition: all 250ms ease, opacity 200ms ease;
-  margin-top: -300px;
-  margin-bottom: 200px;
+  margin-top: -250px;
+  margin-bottom: 0px;
+  margin-top: -270px;
 }
 .xmb-main .xmb-title .xmb-contents .submenu.one.inactive .about-bg {
   opacity: 0;
@@ -221,7 +222,7 @@ body {
   scale: 0.7;
 }
 .xmb-main .xmb-title .xmb-contents .submenu.two.active {
-  margin-top: 235px;
+  margin-top: 200px;
 }
 .xmb-main .xmb-title .xmb-contents .submenu.two.active #twotext {
   -webkit-animation: glow 1s ease-in-out infinite alternate;
@@ -244,70 +245,72 @@ body {
 }
 .xmb-main .xmb-title.homeMenu.active.inactive img {
   scale: 0.8;
+  opacity: 0.6;
 }
 .xmb-main .xmb-title.homeMenu.active.inactive .titletext {
   display: none;
 }
 .xmb-main .xmb-title.homeMenu.active.inactive .xmb-contents {
-  display: none;
+  opacity: 0;
+  transition: opacity 0.1s ease-in-out;
 }
 .xmb-main .xmb-title.settings {
   margin-left: 80px;
 }
+.xmb-main .xmb-title.settings .titletext {
+  margin-top: -2px;
+}
 .xmb-main .xmb-title.settings img {
   scale: 0.8;
+  opacity: 0.6;
 }
 .xmb-main .xmb-title.settings .titletext {
   display: none;
 }
 .xmb-main .xmb-title.settings .xmb-contents {
-  display: none;
+  opacity: 0;
+  transition: opacity 0.1s ease-in-out;
 }
 .xmb-main .xmb-title.settings.active {
   transition: all 300ms ease-in-out;
 }
 .xmb-main .xmb-title.settings.active img {
   scale: 1;
+  opacity: 0.85;
 }
 .xmb-main .xmb-title.settings.active .titletext {
   display: inherit;
 }
 .xmb-main .xmb-title.settings.active .xmb-contents {
-  display: inherit;
-}
-.xmb-main .xmb-title.settings.inactive img {
-  scale: 0.8;
-}
-.xmb-main .xmb-title.settings.inactive .titletext {
-  display: none;
-}
-.xmb-main .xmb-title.settings.inactive .xmb-contents {
-  display: none;
+  opacity: 1;
 }
 .xmb-main .xmb-title.settings .xmb-contents .submenu.one {
   margin-top: 50px;
   margin-bottom: 20px;
 }
 .xmb-main .xmb-title.settings .xmb-contents .submenu.one #about {
-  margin-top: -18px;
+  position: absolute;
   margin-left: 10px;
+  margin-top: -20px;
+  font-size: 1.5rem;
 }
 .xmb-main .xmb-title.settings .xmb-contents .submenu.one .subtext {
   position: absolute;
   margin-left: 10px;
-  margin-top: 13px;
-  font-size: 16px;
-  color: white;
+  margin-top: 10px;
+  font-size: 14px;
+  letter-spacing: 0.3px;
+  color: #dadada;
 }
 .xmb-main .xmb-title.settings .xmb-contents .submenu.one.inactive {
-  margin-top: -300px;
-  margin-bottom: 200px;
+  margin-top: -250px;
+  margin-bottom: 0px;
 }
 .xmb-main .xmb-title.settings .xmb-contents .submenu.one.inactive .subtext {
   opacity: 0;
 }
 .xmb-main .xmb-title.settings .xmb-contents .submenu.one.inactive.one.gotop {
-  margin-top: -600px;
+  margin-top: -350px;
 }
 .xmb-main .xmb-title.settings .xmb-contents .submenu.two #disptext {
   position: absolute;
@@ -318,10 +321,14 @@ body {
 .xmb-main .xmb-title.settings .xmb-contents .submenu.two .subtext {
   position: absolute;
   margin-left: 10px;
-  margin-top: 13px;
-  font-size: 16px;
-  color: white;
+  margin-top: 10px;
+  font-size: 14px;
+  letter-spacing: 0.3px;
+  color: #dadada;
   opacity: 0;
+}
+.xmb-main .xmb-title.settings .xmb-contents .submenu.two.active {
+  margin-top: 180px;
 }
 .xmb-main .xmb-title.settings .xmb-contents .submenu.two.active #disptext {
   -webkit-animation: glow 1s ease-in-out infinite alternate;
@@ -345,21 +352,22 @@ body {
   opacity: 0;
   position: absolute;
   margin-left: 10px;
-  margin-top: 13px;
-  font-size: 16px;
-  color: white;
+  margin-top: 10px;
+  font-size: 14px;
+  letter-spacing: 0.3px;
+  color: #dadada;
 }
 .xmb-main .xmb-title.settings .xmb-contents .submenu.three #systext {
   position: absolute;
-  margin-top: -20px;
   margin-left: 10px;
+  margin-top: -20px;
   font-size: 1.5rem;
 }
 .xmb-main .xmb-title.settings .xmb-contents .submenu.three img {
   scale: 0.7;
 }
 .xmb-main .xmb-title.settings .xmb-contents .submenu.three.active {
-  margin-top: 230px;
+  margin-top: 200px;
 }
 .xmb-main .xmb-title.settings .xmb-contents .submenu.three.active img {
   scale: 1;
@@ -384,12 +392,14 @@ body {
 }
 .xmb-main .xmb-title.messages img {
   scale: 0.8;
+  opacity: 0.6;
 }
 .xmb-main .xmb-title.messages .titletext {
   display: none;
 }
 .xmb-main .xmb-title.messages .xmb-contents {
-  display: none;
+  opacity: 0;
+  transition: opacity 0.1s ease-in-out;
 }
 .xmb-main .xmb-title.messages .xmb-contents {
   margin-left: 40px;
@@ -400,13 +410,139 @@ body {
 }
 .xmb-main .xmb-title.messages.active img {
   scale: 1;
+  opacity: 0.85;
 }
 .xmb-main .xmb-title.messages.active .titletext {
   display: inherit;
 }
 .xmb-main .xmb-title.messages.active .xmb-contents {
-  display: inherit;
+  opacity: 1;
 }
 .xmb-main .xmb-title.messages.active .xmb-contents {
+  margin-right: 54px;
+}
+.xmb-main .xmb-title.music {
+  margin-left: 38px;
+}
+.xmb-main .xmb-title.music img {
+  scale: 0.8;
+  opacity: 0.6;
+}
+.xmb-main .xmb-title.music .titletext {
+  display: none;
+}
+.xmb-main .xmb-title.music .xmb-contents {
+  opacity: 0;
+  transition: opacity 0.1s ease-in-out;
+}
+.xmb-main .xmb-title.music .xmb-contents {
+  margin-left: 40px;
+}
+.xmb-main .xmb-title.music.active {
+  margin-left: 30px;
+  transition: all 300ms ease-in-out;
+}
+.xmb-main .xmb-title.music.active img {
+  scale: 1;
+  opacity: 0.85;
+}
+.xmb-main .xmb-title.music.active .titletext {
+  display: inherit;
+}
+.xmb-main .xmb-title.music.active .xmb-contents {
+  opacity: 1;
+}
+.xmb-main .xmb-title.music.active .xmb-contents {
+  margin-right: 54px;
+}
+.xmb-main .xmb-title.videos {
+  margin-left: 38px;
+}
+.xmb-main .xmb-title.videos img {
+  scale: 0.8;
+  opacity: 0.6;
+}
+.xmb-main .xmb-title.videos .titletext {
+  display: none;
+}
+.xmb-main .xmb-title.videos .xmb-contents {
+  opacity: 0;
+  transition: opacity 0.1s ease-in-out;
+}
+.xmb-main .xmb-title.videos .xmb-contents {
+  margin-left: 40px;
+}
+.xmb-main .xmb-title.videos.active {
+  margin-left: 10px;
+  transition: all 300ms ease-in-out;
+}
+.xmb-main .xmb-title.videos.active img {
+  scale: 1;
+  opacity: 0.85;
+}
+.xmb-main .xmb-title.videos.active .titletext {
+  display: inherit;
+}
+.xmb-main .xmb-title.videos.active .xmb-contents {
+  opacity: 1;
+}
+.xmb-main .xmb-title.videos.active .xmb-contents {
+  margin-right: 54px;
+}
+.xmb-main .xmb-title.games {
+  margin-left: 18px;
+}
+.xmb-main .xmb-title.games img {
+  scale: 0.8;
+  opacity: 0.6;
+}
+.xmb-main .xmb-title.games .titletext {
+  display: none;
+}
+.xmb-main .xmb-title.games .xmb-contents {
+  opacity: 0;
+  transition: opacity 0.1s ease-in-out;
+}
+.xmb-main .xmb-title.games.active {
+  margin-left: 0px;
+  transition: all 300ms ease-in-out;
+}
+.xmb-main .xmb-title.games.active .xmb-contents {
+  margin-left: 20px;
+  margin-right: 0 !important;
+}
+.xmb-main .xmb-title.games.active .abimg {
+  margin-left: 0px;
+  scale: 1.1;
+}
+.xmb-main .xmb-title.games.active #about {
+  position: absolute;
+  margin-left: 220px !important;
+}
+.xmb-main .xmb-title.games.active .twoimg {
+  margin-left: 10px;
+  scale: 1.1;
+}
+.xmb-main .xmb-title.games.active #twotext {
+  position: absolute;
+  margin-left: 225px !important;
+}
+.xmb-main .xmb-title.games.active .submenu.two {
+  margin-top: 20px;
+}
+.xmb-main .xmb-title.games.active .submenu.two.active {
+  margin-top: 250px;
+}
+.xmb-main .xmb-title.games.active img {
+  scale: 1;
+  opacity: 0.85;
+}
+.xmb-main .xmb-title.games.active .titletext {
+  display: inherit;
+}
+.xmb-main .xmb-title.games.active .xmb-contents {
+  opacity: 1;
+}
+.xmb-main .xmb-title.games.active .xmb-contents {
   margin-right: 54px;
 }/*# sourceMappingURL=styles.css.map */

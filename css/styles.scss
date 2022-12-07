@@ -98,17 +98,13 @@ body{
 }
 
 .xmb-main{
-    // display: grid;
-    // grid-template-columns: repeat(3,2fr);
     display: flex;
     justify-content: center;
     text-align: center;
-    margin-top: 12%;
-    margin-right: 40%;
+    margin-top: 10%;
+    margin-right: 0;
     color: #dadada;
     transition: margin-right 300ms;
-    // @include popAnim;
-    // animation: pop 300ms linear 1; 
     z-index: -2;
 
     .xmb-title{
@@ -131,7 +127,6 @@ body{
             .submenu{
                 display: flex;
                 align-items: center;
-                // margin-left: 100px;
                 transition: all 250ms ease, opacity 200ms ease;
                 font-size: 1.3rem;
                 
@@ -195,6 +190,7 @@ body{
                         animation: none;
                     }
                     @include scrollDown;
+                    margin-top: -270px;
                     img{
                         transition: scale 300ms;
                         scale: 0.7;
@@ -213,7 +209,7 @@ body{
                         scale: 0.7;
                     }
                     &.active{
-                        margin-top: 235px;
+                        margin-top: 200px;
                         #twotext{
                             @include glowKeyframes;
                         }
@@ -234,8 +230,9 @@ body{
         }
 
         &.settings{
-            // transition: margin-right 300ms ease-in-out;
-            // margin-right: 400px;
+            .titletext{
+                margin-top: -2px;
+            }
             margin-left: 80px;
             @include displayInactive;
             &.active{
@@ -243,135 +240,36 @@ body{
                 @include displayActive;
             }
 
-            &.inactive{
-                @include displayInactive;
-            }
-
             .xmb-contents{
                 .submenu{
                     &.one{
                         margin-top: 50px;
                         margin-bottom: 20px;
-                        // .about-bg{
-                        //     background: transparent !important;
-
-                        //     // .infowrapper{
-                        //     //     background-image: url('/images/doubleclicktest.png');
-                        //     //     background-size:contain;
-                        //     //     background-repeat: no-repeat;
-                        //     //     height: 35%;
-                        //     //     transition: scale 300ms;
-
-                        //     //     &:hover{
-                        //     //         scale: 1.1;
-                        //     //     }
-
-                        //     //     .gitlinks{
-                        //     //         position: absolute;
-                        //     //         top: 100%;
-                        //     //         right: .2%;
-                        //     //         width: 100%;
-                        //     //         text-align: center;
-                        //     //         a{
-                        //     //             color: white;
-                        //     //             font-size: 1.2rem;
-                        //     //             padding: 40px;
-                        //     //         }
-                        //     //     }
-                        //     // }
-                        // }
                         #about{
-                            margin-top: -18px;
-                            margin-left: 10px;
+                           @include subTitleStyling;
                         }
                         .subtext{
-                            position: absolute;
-                            margin-left: 10px;
-                            margin-top: 13px;
-                            font-size: 16px;
-                            color: white;
+                            @include subTextStyling;
                         }
-                        // .projectinfo{
-                        //     @include bgStyling;
-                        //     margin-top: 70px;
-                        //     z-index: -2;
-                        //     opacity:0;
-
-                        //     h1{
-                        //         text-shadow: $shadowtext;
-                        //         font-weight: 400;
-                        //         text-align: left;
-                        //         margin-left: 80px;
-                        //         margin-bottom: -45px;
-                        //     }
-
-                        //     p{
-                        //         text-align: right;
-                        //         margin-right: 100px;
-
-                        //         &:hover{
-                        //             color: white;
-                        //             transition: 0.3s ease-in-out;
-                        //             cursor: pointer;
-                        //         }
-                        //     } 
-
-                        //     .content{
-                        //         border-top: 1px solid #dadada;
-                        //         border-bottom: 1px solid #dadada;
-                        //         padding: 100px 0px;
-                                
-                        //         a{
-                        //             color: white;
-                        //             font-size: 1.5rem;
-                        //             padding: 20px;
-                        //         }
-                        //         img{
-                        //             width: 50%;
-                        //         }
-                            
-                        //         p{
-                        //             width: 50%;
-                        //             text-align: center;
-                        //             margin-left: 25%;
-                        //         }
-                        //     }
-
-                          
-                        //     backdrop-filter: blur(10px);
-
-                        //     &.active{
-                        //         @include popAnim;
-                        //         animation: pop 0.1s linear 1;
-                        //         opacity: 1;
-                        //         z-index: 1;
-                        //     }
-                        // }
                     }
                     &.one.inactive{
                         @include scrollDown;
                         &.one.gotop{
-                            margin-top:-600px;
+                            margin-top: -350px;
                         }
                     }
 
                     &.two{
                         #disptext{
-                            position: absolute;
-                            margin-left: 10px;
-                            margin-top: -20px;
-                            font-size: 1.5rem;
+                            @include subTitleStyling;
                         }
                         .subtext{
-                            position: absolute;
-                            margin-left: 10px;
-                            margin-top: 13px;
-                            font-size: 16px;
-                            color: white;
+                            @include subTextStyling;
                             opacity: 0;
                         }
 
                         &.active{
+                                margin-top: 180px;
                                #disptext{
                                     @include glowKeyframes;
                                 }
@@ -386,18 +284,11 @@ body{
                         margin-top: 20px;
                         .subtext{
                             opacity: 0;
-                            position: absolute;
-                            margin-left: 10px;
-                            margin-top: 13px;
-                            font-size: 16px;
-                            color: white;
+                            @include subTextStyling;
                         }
 
                         #systext{
-                            position: absolute;
-                            margin-top: -20px;
-                            margin-left: 10px;
-                            font-size: 1.5rem;
+                           @include subTitleStyling;
                         }
 
                         img{
@@ -405,7 +296,7 @@ body{
                         }
 
                         &.active{
-                            margin-top: 230px;
+                            margin-top: 200px;
                             img{
                                 scale: 1.0;
                             }
@@ -429,6 +320,83 @@ body{
             }
             &.active{
                 margin-left: 110px;
+                transition: all 300ms ease-in-out;
+                @include displayActive;
+                .xmb-contents{
+                    margin-right: 54px
+                }
+            }
+        }
+
+        &.music{
+            @include displayInactive;
+            margin-left: 38px;
+            .xmb-contents{
+                margin-left: 40px;
+            }
+            &.active{
+                margin-left: 30px;
+                transition: all 300ms ease-in-out;
+                @include displayActive;
+                .xmb-contents{
+                    margin-right: 54px
+                }
+            }
+        }
+
+        &.videos{
+            @include displayInactive;
+            margin-left: 38px;
+            .xmb-contents{
+                margin-left: 40px;
+            }
+            &.active{
+                margin-left: 10px;
+                transition: all 300ms ease-in-out;
+                @include displayActive;
+                .xmb-contents{
+                    margin-right: 54px
+                }
+            }
+        }
+
+        &.games{
+            @include displayInactive;
+            margin-left: 18px;
+            &.active{
+                .xmb-contents{
+                    margin-left: 20px;
+                    margin-right: 0 !important;
+                }
+                
+                .abimg{
+                    margin-left: 0px;
+                    scale: 1.1;
+                }
+                
+                #about{
+                    position: absolute;
+                    margin-left: 220px !important;
+                }
+
+                .twoimg{
+                    margin-left: 10px;
+                    scale: 1.1;
+                }
+                
+                #twotext{
+                    position: absolute;
+                    margin-left: 225px !important;
+                }
+
+                .submenu.two{
+                    margin-top: 20px;
+                    &.active{
+                         margin-top: 250px;
+                    }
+                }
+                
+                margin-left: 0px;
                 transition: all 300ms ease-in-out;
                 @include displayActive;
                 .xmb-contents{
