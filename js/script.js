@@ -2,6 +2,8 @@ const video = document.getElementById("vid")
 const titles = document.getElementById("title")
 const warning = document.querySelectorAll(".warning")[0]
 const menu = document.getElementById("menu")
+const clockSection = document.querySelectorAll(".clock")[0]
+const dateTime = document.getElementById("date")
 const xmbMain = document.querySelectorAll(".xmb-main")[0]
 const homeSection = document.querySelectorAll(".xmb-title.homeMenu")[0]
 const projectsSection = document.querySelectorAll(".xmb-title.settings")[0]
@@ -64,6 +66,12 @@ let warningDisplay = async () =>{
     await warningTimeOut();
 }
 
+let sideClock = () => {
+    let clock = `${new Date().getDay()}/${new Date().getMonth()} ${new Date().getHours()}:${new Date().getMinutes()}`
+    dateTime.innerText = clock
+    setTimeout(sideClock, 1000)
+}
+
 let loadTitles = async () =>{
     await checkLoad()
     video.play()
@@ -76,6 +84,8 @@ let loadTitles = async () =>{
 let loadMenu = async () =>{
     await loadTitles()
     menu.style.opacity = '1'
+    sideClock()
+    clockSection.style.opacity = '1'
     console.log(homeSection)
 }
 
