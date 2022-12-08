@@ -67,7 +67,7 @@ let warningDisplay = async () =>{
 }
 
 let sideClock = () => {
-    let clock = `${new Date().getDay()}/${new Date().getMonth()} ${new Date().getHours()}:${new Date().getMinutes()}`
+    let clock = `${new Date().getDate()}/${new Date().getMonth()+1} ${new Date().getHours()}:${new Date().getMinutes()}`
     dateTime.innerText = clock
     setTimeout(sideClock, 1000)
 }
