@@ -67,7 +67,8 @@ let warningDisplay = async () =>{
 }
 
 let sideClock = () => {
-    let clock = `${new Date().getDate()}/${new Date().getMonth()+1} ${new Date().getHours()}:${new Date().getMinutes()}`
+    let d  = new Date()
+    let clock = `${d.getDate()}/${d.getMonth()+1} ${d.getHours()}:${d.getMinutes()}`
     dateTime.innerText = clock
     setTimeout(sideClock, 1000)
 }
@@ -114,7 +115,15 @@ let focusProjects = () => {
     isProjects = true
     projectsSection.classList.add("active")
     homeSection.classList.add("inactive")
+    
+    if (document.body.clientWidth < 1400) {
+        xmbMain.style.marginRight = '1%'
+    }
+    else {
+        xmbMain.style.marginRight = '18%'
+    }
     contactSection.style.marginLeft = '75px'
+    
     if(isContact){
         contactSection.classList.remove("active")
     }
@@ -129,6 +138,14 @@ let focusContacts = () => {
     isContact = true
     projectsSection.classList.remove("active")
     contactSection.classList.add("active")
+    
+    if (document.body.clientWidth < 1400) {
+        xmbMain.style.marginRight = '32%'
+    }
+    else {
+        xmbMain.style.marginRight = '35%'
+    }
+
     if(isMusic){
         musicSection.classList.remove("active")
     }
@@ -144,6 +161,17 @@ let focusMusic = () =>{
     isMusic = true
     contactSection.classList.remove("active")
     musicSection.classList.add("active")
+    
+    if (document.body.clientWidth < 1400) {
+        xmbMain.style.marginRight = '56%'
+    }
+    else if(document.body.clientWidth >= 2560 && document.body.clientWidth <= 3840){
+        xmbMain.style.marginRight = '47%'
+    }
+    else {
+        xmbMain.style.marginRight = '57%'
+    }
+
     if(isVideo){
         videoSection.classList.remove("active")
     }
@@ -159,6 +187,17 @@ let focusVideo = () =>{
     isVideo = true
     musicSection.classList.remove("active")
     videoSection.classList.add("active")
+    
+    if (document.body.clientWidth < 1400) {
+        xmbMain.style.marginRight = '85%'
+    }
+    else if (document.body.clientWidth >= 2560 && document.body.clientWidth <= 3840){
+        xmbMain.style.marginRight = '62%'
+    }
+    else {
+        xmbMain.style.marginRight = '77%'
+    }
+
     if(isGame){
         gameSection.classList.remove("active")
     }
@@ -175,6 +214,17 @@ let focusGame = () =>{
     isGame = true
     videoSection.classList.remove("active")
     gameSection.classList.add("active")
+    
+    if (document.body.clientWidth < 1400) {
+        xmbMain.style.marginRight = '100%'
+    }
+    else if (document.body.clientWidth >= 2560 && document.body.clientWidth <= 3840) {
+        xmbMain.style.marginRight = '77%'
+    }
+    else {
+        xmbMain.style.marginRight = '97%'
+    }
+    
     console.log("in video")
 }
 
@@ -247,26 +297,21 @@ document.body.addEventListener('keydown', (e) =>{
         e.preventDefault()
         if(isHome && !isProjects){
             focusProjects()
-            xmbMain.style.marginRight = '18%'
         }
         else if(isProjects && !isHome){
             focusContacts()
-            xmbMain.style.marginRight = '35%'
         }
 
         else if(isContact && !isProjects){
             focusMusic()
-            xmbMain.style.marginRight = '57%'
         }
 
         else if(isMusic && !isContact){
             focusVideo()
-            xmbMain.style.marginRight = '77%'
         }
 
         else if(isVideo && !isMusic){
             focusGame()
-            xmbMain.style.marginRight = '97%'
         }
     }
 
@@ -275,29 +320,25 @@ document.body.addEventListener('keydown', (e) =>{
         e.preventDefault()
         if(isGame && !isVideo){
             focusVideo()
-            xmbMain.style.marginRight = '77%'
         }
 
         else if(isVideo && !isMusic){
             focusMusic()
-            xmbMain.style.marginRight = '57%'
         }
 
         else if(isMusic && !isContact){
             focusContacts()
-            xmbMain.style.marginRight = '35%'
         }
 
         else if(isContact && !isProjects){
             focusProjects()
-            xmbMain.style.marginRight = '18%'
             projectsSection.style.marginLeft = null
         }
 
         else if(isProjects && !isHome){
             focusHome()
             homeSection.classList.remove("inactive")
-            xmbMain.style.marginRight = null
+            xmbMain.style.marginRight = null;
         }
     }
 })

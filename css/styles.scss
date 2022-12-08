@@ -429,4 +429,8 @@ body{
             }
         }
     }
+
+    @media screen and (max-width:1366px) and (max-height:768px) {
+        margin-right: -30%;
+    }
 }
