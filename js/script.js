@@ -6,8 +6,8 @@ const clockSection = document.querySelectorAll(".clock")[0]
 const dateTime = document.getElementById("date")
 const xmbMain = document.querySelectorAll(".xmb-main")[0]
 const homeSection = document.querySelectorAll(".xmb-title.homeMenu")[0]
-const projectsSection = document.querySelectorAll(".xmb-title.settings")[0]
-const contactSection = document.querySelectorAll(".xmb-title.messages")[0]
+const settingsSection = document.querySelectorAll(".xmb-title.settings")[0]
+const photoSection = document.querySelectorAll(".xmb-title.messages")[0]
 const musicSection = document.querySelectorAll(".xmb-title.music")[0]
 const videoSection = document.querySelectorAll(".xmb-title.videos")[0]
 const gameSection = document.querySelectorAll(".xmb-title.games")[0]
@@ -21,8 +21,8 @@ const startupSound = document.getElementById("startup")
 const navSound = document.getElementById("nav")
 
 let isHome = true
-let isProjects = false
-let isContact = false
+let isSettings = false
+let isPhotos = false
 let isMusic = false
 let isVideo = false
 let isGame = false
@@ -31,7 +31,7 @@ let isSubTwo = false
 let isSubThree = false
 let sectionNumber = 0
 let multiSection = 0
-contactSection.style.marginLeft = '90px'
+photoSection.style.marginLeft = '90px'
 startupSound.play()
 
 
@@ -93,27 +93,27 @@ let loadMenu = async () =>{
 let focusHome =  () =>{
     sectionNumber = 0
     isHome = true
-    isProjects = false
-    projectsSection.classList.remove("active")
+    isSettings = false
+    settingsSection.classList.remove("active")
     homeSection.classList.remove("inactive")
-    contactSection.style.marginLeft = '65px'
-    if(isProjects){
-        projectsSection.classList.remove("active")
+    photoSection.style.marginLeft = '65px'
+    if(isSettings){
+        settingsSection.classList.remove("active")
         homeSection.classList.remove("inactive")
     }
-    else if(isContact){
+    else if(isPhotos){
         homeSection.classList.add("inactive")
     }
     console.log("in home")
     console.log("section number is now 0")
 }
 
-let focusProjects = () => { 
+let focusSettings = () => { 
     sectionNumber = 1
     multiSection = 0
     isHome = false
-    isProjects = true
-    projectsSection.classList.add("active")
+    isSettings = true
+    settingsSection.classList.add("active")
     homeSection.classList.add("inactive")
     
     if (document.body.clientWidth < 1400) {
@@ -122,22 +122,22 @@ let focusProjects = () => {
     else {
         xmbMain.style.marginRight = '18%'
     }
-    contactSection.style.marginLeft = '75px'
+    photoSection.style.marginLeft = '75px'
     
-    if(isContact){
-        contactSection.classList.remove("active")
+    if(isPhotos){
+        photoSection.classList.remove("active")
     }
     console.log("in projects")
     console.log("section number is now 1")
 }
 
-let focusContacts = () => {
+let focusPhotos = () => {
     sectionNumber = 2
     isHome = false
-    isProjects = false
-    isContact = true
-    projectsSection.classList.remove("active")
-    contactSection.classList.add("active")
+    isSettings = false
+    isPhotos = true
+    settingsSection.classList.remove("active")
+    photoSection.classList.add("active")
     
     if (document.body.clientWidth < 1400) {
         xmbMain.style.marginRight = '32%'
@@ -156,10 +156,10 @@ let focusContacts = () => {
 let focusMusic = () =>{
     sectionNumber = 3
     isHome = false
-    isProjects = false
-    isContact = false
+    isSettings = false
+    isPhotos = false
     isMusic = true
-    contactSection.classList.remove("active")
+    photoSection.classList.remove("active")
     musicSection.classList.add("active")
     
     if (document.body.clientWidth < 1400) {
@@ -181,8 +181,8 @@ let focusMusic = () =>{
 let focusVideo = () =>{
     sectionNumber = 4
     isHome = false
-    isProjects = false
-    isContact = false
+    isSettings = false
+    isPhotos = false
     isMusic = false
     isVideo = true
     musicSection.classList.remove("active")
@@ -207,8 +207,8 @@ let focusVideo = () =>{
 let focusGame = () =>{
     sectionNumber = 5
     isHome = false
-    isProjects = false
-    isContact = false
+    isSettings = false
+    isPhotos = false
     isMusic = false
     isVideo = false
     isGame = true
@@ -295,18 +295,18 @@ document.body.addEventListener('keydown', (e) =>{
     else if(e.key === 'ArrowRight'){
         navSound.play()
         e.preventDefault()
-        if(isHome && !isProjects){
-            focusProjects()
+        if(isHome && !isSettings){
+            focusSettings()
         }
-        else if(isProjects && !isHome){
-            focusContacts()
+        else if(isSettings && !isHome){
+            focusPhotos()
         }
 
-        else if(isContact && !isProjects){
+        else if(isPhotos && !isSettings){
             focusMusic()
         }
 
-        else if(isMusic && !isContact){
+        else if(isMusic && !isPhotos){
             focusVideo()
         }
 
@@ -326,16 +326,16 @@ document.body.addEventListener('keydown', (e) =>{
             focusMusic()
         }
 
-        else if(isMusic && !isContact){
-            focusContacts()
+        else if(isMusic && !isPhotos){
+            focusPhotos()
         }
 
-        else if(isContact && !isProjects){
-            focusProjects()
-            projectsSection.style.marginLeft = null
+        else if(isPhotos && !isSettings){
+            focusSettings()
+            settingsSection.style.marginLeft = null
         }
 
-        else if(isProjects && !isHome){
+        else if(isSettings && !isHome){
             focusHome()
             homeSection.classList.remove("inactive")
             xmbMain.style.marginRight = null;
