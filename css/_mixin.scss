@@ -11,7 +11,7 @@
      }
      .xmb-contents{
          opacity: 0;
-         transition: opacity 0.1s ease-in-out;
+         transition: opacity 0.2s ease-in-out;
      } 
 }
 
@@ -60,12 +60,6 @@
         opacity: 0;
     }
 
-}
-
-@mixin popAnim{
-    @keyframes pop{
-        50%  {transform: scale(1.1);}
-    }
 }
 
 @mixin subTextStyling{

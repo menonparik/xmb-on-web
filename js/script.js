@@ -31,7 +31,6 @@ let isSubTwo = false
 let isSubThree = false
 let sectionNumber = 0
 let multiSection = 0
-photoSection.style.marginLeft = '90px'
 startupSound.play()
 
 
@@ -90,13 +89,25 @@ let loadMenu = async () =>{
     console.log(homeSection)
 }
 
+let moveMenu = (hd, ultraHd, fullHd) =>{
+    let width = document.body.clientWidth
+    if (width < 1400) {
+        xmbMain.style.marginRight = hd
+    }
+    else if (width >= 2560 && width <= 3840) {
+        xmbMain.style.marginRight = ultraHd
+    }
+    else {
+        xmbMain.style.marginRight = fullHd
+    }
+}
+
 let focusHome =  () =>{
     sectionNumber = 0
     isHome = true
     isSettings = false
     settingsSection.classList.remove("active")
     homeSection.classList.remove("inactive")
-    photoSection.style.marginLeft = '65px'
     if(isSettings){
         settingsSection.classList.remove("active")
         homeSection.classList.remove("inactive")
@@ -115,14 +126,7 @@ let focusSettings = () => {
     isSettings = true
     settingsSection.classList.add("active")
     homeSection.classList.add("inactive")
-    
-    if (document.body.clientWidth < 1400) {
-        xmbMain.style.marginRight = '1%'
-    }
-    else {
-        xmbMain.style.marginRight = '18%'
-    }
-    photoSection.style.marginLeft = '75px'
+    moveMenu('-10%', '18%', '18%')
     
     if(isPhotos){
         photoSection.classList.remove("active")
@@ -138,19 +142,11 @@ let focusPhotos = () => {
     isPhotos = true
     settingsSection.classList.remove("active")
     photoSection.classList.add("active")
-    
-    if (document.body.clientWidth < 1400) {
-        xmbMain.style.marginRight = '32%'
-    }
-    else {
-        xmbMain.style.marginRight = '35%'
-    }
+    moveMenu('22%', '32%', '39%')
 
     if(isMusic){
         musicSection.classList.remove("active")
     }
-    console.log("in Contacts")
-    console.log("section number is now 2")
 }
 
 let focusMusic = () =>{
@@ -161,21 +157,11 @@ let focusMusic = () =>{
     isMusic = true
     photoSection.classList.remove("active")
     musicSection.classList.add("active")
-    
-    if (document.body.clientWidth < 1400) {
-        xmbMain.style.marginRight = '56%'
-    }
-    else if(document.body.clientWidth >= 2560 && document.body.clientWidth <= 3840){
-        xmbMain.style.marginRight = '47%'
-    }
-    else {
-        xmbMain.style.marginRight = '57%'
-    }
+    moveMenu('50%', '47%', '60%')
 
     if(isVideo){
         videoSection.classList.remove("active")
     }
-    console.log("in Music")
 }
 
 let focusVideo = () =>{
@@ -187,21 +173,11 @@ let focusVideo = () =>{
     isVideo = true
     musicSection.classList.remove("active")
     videoSection.classList.add("active")
-    
-    if (document.body.clientWidth < 1400) {
-        xmbMain.style.marginRight = '85%'
-    }
-    else if (document.body.clientWidth >= 2560 && document.body.clientWidth <= 3840){
-        xmbMain.style.marginRight = '62%'
-    }
-    else {
-        xmbMain.style.marginRight = '77%'
-    }
+    moveMenu('76%', '62%', '77%')
 
     if(isGame){
         gameSection.classList.remove("active")
     }
-    console.log("in video")
 }
 
 let focusGame = () =>{
@@ -213,19 +189,8 @@ let focusGame = () =>{
     isVideo = false
     isGame = true
     videoSection.classList.remove("active")
-    gameSection.classList.add("active")
-    
-    if (document.body.clientWidth < 1400) {
-        xmbMain.style.marginRight = '100%'
-    }
-    else if (document.body.clientWidth >= 2560 && document.body.clientWidth <= 3840) {
-        xmbMain.style.marginRight = '77%'
-    }
-    else {
-        xmbMain.style.marginRight = '97%'
-    }
-    
-    console.log("in video")
+    gameSection.classList.add("active") 
+    moveMenu('100%', '77%', '97%')
 }
 
 let focusSubOne = () =>{
@@ -234,7 +199,6 @@ let focusSubOne = () =>{
     isSubThree = false
     submenuTwo[sectionNumber].classList.remove("active")
     submenuOne[sectionNumber].classList.remove("inactive")
-    console.log(isSubOne)
 }
 
 let focusSubTwo = () =>{
@@ -249,7 +213,6 @@ let focusSubTwo = () =>{
     isSubThree = false
     submenuTwo[sectionNumber].classList.add("active")
     submenuOne[sectionNumber].classList.add("inactive")
-    console.log(isSubOne)
 }
 
 let focusSubThree = () =>{
@@ -260,7 +223,6 @@ let focusSubThree = () =>{
         submenuThree[multiSection].classList.add("active")
         submenuTwo[sectionNumber].classList.remove("active")
         submenuOne[sectionNumber].classList.add("gotop")
-        console.log(isSubOne)
     }
 }
 
