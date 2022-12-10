@@ -1,0 +1,13 @@
+@use "../abstract/" as *;
+
+.xmb-title{
+    &.homeMenu.active{
+        .titletext{
+            margin-top: -10px;
+        }
+        &.inactive{
+            transition: margin-left 200ms;
+            @include displayInactive;
+        }
+    }
+}

@@ -1,0 +1,12 @@
+@use "../abstract/" as *;
+
+.xmb-title.messages{
+    .xmb-contents{
+        margin-top: 15px;
+        margin-left: 40px;
+
+        .submenu.one{
+            padding-bottom: 20px;
+        }
+    }
+}

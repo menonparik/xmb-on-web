@@ -14,9 +14,6 @@ const gameSection = document.querySelectorAll(".xmb-title.games")[0]
 const submenuOne = document.querySelectorAll(".submenu.one")
 const submenuTwo = document.querySelectorAll(".submenu.two")
 const submenuThree = document.querySelectorAll(".submenu.three")
-const projectImage = document.querySelectorAll(".infowrapper")
-const closeButton = document.getElementById("close") 
-const section = document.querySelectorAll(".xmb-title")
 const startupSound = document.getElementById("startup")
 const navSound = document.getElementById("nav")
 
@@ -35,7 +32,7 @@ startupSound.play()
 
 
 let checkLoad = () =>{
-    return new Promise((resolve, reject) => {
+    return new Promise((resolve) => {
         window.onload = resolve
     })
 }
@@ -78,7 +75,6 @@ let loadTitles = async () =>{
     video.style.opacity = '1'
     titles.style.opacity = '1'
     await warningDisplay();
-    // await titlesTimeOut()
 }
 
 let loadMenu = async () =>{
@@ -86,7 +82,6 @@ let loadMenu = async () =>{
     menu.style.opacity = '1'
     sideClock()
     clockSection.style.opacity = '1'
-    console.log(homeSection)
 }
 
 let moveMenu = (hd, ultraHd, fullHd) =>{
@@ -115,8 +110,6 @@ let focusHome =  () =>{
     else if(isPhotos){
         homeSection.classList.add("inactive")
     }
-    console.log("in home")
-    console.log("section number is now 0")
 }
 
 let focusSettings = () => { 
@@ -131,13 +124,10 @@ let focusSettings = () => {
     if(isPhotos){
         photoSection.classList.remove("active")
     }
-    console.log("in projects")
-    console.log("section number is now 1")
 }
 
 let focusPhotos = () => {
     sectionNumber = 2
-    isHome = false
     isSettings = false
     isPhotos = true
     settingsSection.classList.remove("active")
@@ -151,8 +141,6 @@ let focusPhotos = () => {
 
 let focusMusic = () =>{
     sectionNumber = 3
-    isHome = false
-    isSettings = false
     isPhotos = false
     isMusic = true
     photoSection.classList.remove("active")
@@ -166,9 +154,6 @@ let focusMusic = () =>{
 
 let focusVideo = () =>{
     sectionNumber = 4
-    isHome = false
-    isSettings = false
-    isPhotos = false
     isMusic = false
     isVideo = true
     musicSection.classList.remove("active")
@@ -182,10 +167,6 @@ let focusVideo = () =>{
 
 let focusGame = () =>{
     sectionNumber = 5
-    isHome = false
-    isSettings = false
-    isPhotos = false
-    isMusic = false
     isVideo = false
     isGame = true
     videoSection.classList.remove("active")
@@ -196,7 +177,6 @@ let focusGame = () =>{
 let focusSubOne = () =>{
     isSubOne = true
     isSubTwo = false
-    isSubThree = false
     submenuTwo[sectionNumber].classList.remove("active")
     submenuOne[sectionNumber].classList.remove("inactive")
 }
@@ -218,7 +198,6 @@ let focusSubTwo = () =>{
 let focusSubThree = () =>{
     if(sectionNumber === 1){
         isSubThree = true
-        isSubOne = false
         isSubTwo = false
         submenuThree[multiSection].classList.add("active")
         submenuTwo[sectionNumber].classList.remove("active")

@@ -1,0 +1,15 @@
+@use "../abstract/" as *;
+
+.back-vid{
+    position: absolute;
+    right: 0;
+    top: 0;
+    z-index: -1;
+    width: 100%;
+    height: 100%;
+    -o-object-fit: cover;
+    object-fit: cover;
+    opacity: 0;
+    transition: opacity 10s;
+    pointer-events: none;
+}

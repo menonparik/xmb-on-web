@@ -1,0 +1,14 @@
+@use "../abstract/" as *;
+
+.xmb-title{
+    transition: scale 300ms;
+    z-index:2;
+
+    img{
+        transition: scale 200ms;
+    }
+    .titletext{
+        margin-top: -2px;
+        font-size: 18px;
+    }
+}

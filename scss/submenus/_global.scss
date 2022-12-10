@@ -1,0 +1,75 @@
+@use "../abstract/" as *;
+.xmb-contents{
+    transition: opacity 300ms ease-in-out;
+    p{
+        font-size: 1.2rem;
+    }
+
+    .submenu{
+        display: flex;
+        align-items: center;
+        transition: all 250ms ease, opacity 200ms ease;
+        font-size: 1.3rem;
+        
+        &.one{
+            margin-left: 5px;
+            margin-top: 50px;
+            transition: all 250ms ease, opacity 200ms ease;
+            
+            #about{
+                position: absolute;
+                margin-left: 115px;
+                animation: $glowtext;
+                @include glowKeyframes;
+                font-size: 1.5rem;
+            }
+
+            img{
+                z-index: 2;
+            }
+
+            &.inactive{
+                @include scrollDown;
+                margin-top: -270px;
+                transition: all 250ms ease, opacity 200ms ease;
+                .about-bg{
+                    opacity: 0;
+                }
+
+                #about{
+                    animation: none;
+                }
+                
+                img{
+                    transition: scale 300ms;
+                    scale: 0.7;
+                }
+            }
+        }
+
+        &.two{
+            transition: all 250ms ease, opacity 200ms ease;
+
+            #twotext{
+                font-size: 1.5rem;
+                position: absolute;
+                margin-left: 120px;
+            }
+
+            img{
+                scale: 0.7;
+            }
+
+            &.active{
+                margin-top: 200px;
+                #twotext{
+                    @include glowKeyframes;
+                }
+                img{
+                    transition: scale 100ms ease-in-out;
+                    scale: 1.0;
+                }
+            }
+        }
+    }
+}

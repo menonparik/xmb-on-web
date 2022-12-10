@@ -1,0 +1,30 @@
+@use '../abstract/' as *;
+
+.about-bg{
+    @include bgStyling;
+    opacity: 1;
+    background: $background-aboutbg;
+
+    .infowrapper{
+        border: 1px solid;
+        border-radius: 15px;
+        z-index: -1;
+        width: 50%;
+        position: absolute;
+        left: 50%;
+        top: 45%;
+        width: 40%;
+        height: auto;
+        background: $backround-aboutwrapper;
+        text-align: left;
+        padding: 20px;
+        line-height: 30px;
+        
+        h1{
+            font-size: 2rem;
+            border-bottom: 2px solid white;
+            padding: 20px 0px;
+            margin-top: -10px;
+        }
+    }
+}

@@ -1,0 +1,16 @@
+@use "../abstract/" as *;
+
+.xmb-title{
+    &.messages{
+        @include displayInactive;
+        margin-left: 65px;
+        &.active{
+            margin-left: 75px;
+            transition: all 300ms ease-in-out;
+            @include displayActive;
+            .xmb-contents{
+                margin-right: 54px
+            }
+        }
+    }
+}

@@ -1,0 +1,43 @@
+@use "../abstract/" as *;
+
+body{
+    margin: 0;
+    padding: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: black;
+    overflow-y: hidden;
+    overflow-x: hidden;
+    z-index: -1;
+}
+
+#startup{
+    display: none;
+}
+
+#menu{
+    opacity: 0;
+    transition: opacity 1s;
+
+    img{
+        filter: $shadowimage;
+    }
+
+    p{
+        text-shadow: $shadowtext;
+    }
+}
+
+.xmb-main{
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    margin-top: 14%;
+    margin-right: 0;
+    color: $primary-color;
+    transition: margin-right 300ms;
+    z-index: -2;
+    
+    @media screen and (max-width:1366px) and (max-height:768px) {
+        margin-right: -40%;
+    }
+}

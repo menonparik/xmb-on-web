@@ -1,0 +1,81 @@
+@use "../abstract/" as *;
+
+.xmb-title.settings{
+    .xmb-contents{
+        .submenu{
+            &.one{
+                margin-top: 50px;
+                margin-bottom: 20px;
+
+                #about{
+                   @include subTitleStyling;
+                }
+
+                .subtext{
+                    @include subTextStyling;
+                }
+                
+                &.inactive{
+                    @include scrollDown;
+
+                    &.gotop{
+                        margin-top: -350px;
+                    }
+                }
+            }
+
+            &.two{
+                #disptext{
+                    @include subTitleStyling;
+                }
+
+                .subtext{
+                    @include subTextStyling;
+                    opacity: 0;
+                }
+
+                &.active{
+                        margin-top: 180px;
+                        padding-bottom: 30px;
+                        
+                        #disptext{
+                            @include glowKeyframes;
+                        }
+                       
+                        .subtext{
+                            opacity: 1;
+                        }
+                }
+            }
+            
+            &.three{
+                margin-top: -10px;
+                .subtext{
+                    opacity: 0;
+                    @include subTextStyling;
+                }
+
+                #systext{
+                   @include subTitleStyling;
+                }
+
+                img{
+                    scale: 0.7;
+                }
+
+                &.active{
+                    margin-top: 190px;
+                    img{
+                        scale: 1.0;
+                    }
+                    #systext{
+                        @include glowKeyframes;
+                    }
+                    .subtext{
+                        opacity: 1;
+                    }
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,18 @@
+@use "../abstract/" as *;
+
+.xmb-title.games{
+    .xmb-contents{
+        margin-top: 70px;
+        margin-left: 10px;
+        margin-right: 0 !important;
+        .submenu.one{
+             padding-bottom: 20px;
+        }
+
+        .submenu.two{
+            &.active{
+                 margin-top: 200px;
+            }
+        }
+    }
+}

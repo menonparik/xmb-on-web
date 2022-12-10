@@ -1,0 +1,32 @@
+@use "../abstract/" as *;
+
+.xmb-title{
+    &.games{
+        @include displayInactive;
+        margin-left: 18px;
+        .abimg{
+            margin-left: 0px;
+            scale: 1.1;
+        }
+
+        #about{
+            position: absolute;
+            margin-left: 220px !important;
+        }
+
+        .twoimg{
+            margin-left: 10px;
+            scale: 1.1;
+        }
+
+        #twotext{
+            position: absolute;
+            margin-left: 225px !important;
+        }
+        &.active{
+            margin-left: 20px;
+            transition: all 300ms ease-in-out;
+            @include displayActive;
+        }
+    }
+}

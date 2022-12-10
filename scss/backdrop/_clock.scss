@@ -1,0 +1,27 @@
+@use "../abstract/" as *;
+
+.clock{
+    opacity: 0;
+    position: absolute;
+    top: 5%;
+    left: 80%; 
+    bottom: 0;
+    right: 0;
+    width: 5%;
+    color: white;
+    text-align: right;
+    font-size: 18px;
+    z-index: 3;
+    .clock-container{
+        width: 400%;
+        border: 1px solid $primary-color;
+        border-right: none;
+        border-radius: 3px;
+        padding-right: 0px 40px;
+        p{
+            letter-spacing: 1px;
+            margin-right: 20px;
+            text-shadow: $shadowtext;
+        }
+    }
+}

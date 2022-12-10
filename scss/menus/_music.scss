@@ -1,0 +1,16 @@
+@use "../abstract/" as *;
+
+.xmb-title{
+    &.music{
+        @include displayInactive;
+        margin-left: 38px;
+        &.active{
+            margin-left: 30px;
+            transition: all 300ms ease-in-out;
+            @include displayActive;
+            .xmb-contents{
+                margin-right: 54px
+            }
+        }
+    }
+}
