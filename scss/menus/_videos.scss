@@ -3,7 +3,7 @@
 .xmb-title{ 
   &.videos{
         @include displayInactive;
-        margin-left: 70px;
+        margin-left: 55px;
         &.active{
             transition: all 300ms ease-in-out;
             @include displayActive;

@@ -5,31 +5,18 @@ const menu = document.getElementById("menu")
 const clockSection = document.querySelectorAll(".clock")[0]
 const dateTime = document.getElementById("date")
 const xmbMain = document.querySelectorAll(".xmb-main")[0]
-const homeSection = document.querySelectorAll(".xmb-title.homeMenu")[0]
-const settingsSection = document.querySelectorAll(".xmb-title.settings")[0]
-const photoSection = document.querySelectorAll(".xmb-title.messages")[0]
-const musicSection = document.querySelectorAll(".xmb-title.music")[0]
-const videoSection = document.querySelectorAll(".xmb-title.videos")[0]
-const gameSection = document.querySelectorAll(".xmb-title.games")[0]
+const section = document.querySelectorAll(".xmb-title")
 const submenuOne = document.querySelectorAll(".submenu.one")
 const submenuTwo = document.querySelectorAll(".submenu.two")
-const submenuThree = document.querySelectorAll(".submenu.three")
+const submenuthree = document.querySelectorAll(".submenu.three")
+const submenu = [submenuOne, submenuTwo, submenuthree]
 const startupSound = document.getElementById("startup")
 const navSound = document.getElementById("nav")
 
-let isHome = true
-let isSettings = false
-let isPhotos = false
-let isMusic = false
-let isVideo = false
-let isGame = false
-let isSubOne = true
-let isSubTwo = false
-let isSubThree = false
 let sectionNumber = 0
-let multiSection = 0
+let subsection = 0
+let multiSection
 startupSound.play()
-
 
 let checkLoad = () =>{
     return new Promise((resolve) => {
@@ -97,111 +84,73 @@ let moveMenu = (hd, ultraHd, fullHd) =>{
     }
 }
 
-let focusHome =  () =>{
-    sectionNumber = 0
-    isHome = true
-    isSettings = false
-    settingsSection.classList.remove("active")
-    homeSection.classList.remove("inactive")
-    if(isSettings){
-        settingsSection.classList.remove("active")
-        homeSection.classList.remove("inactive")
+let focusSection = (sn, right, left) =>{
+    section[sn].classList.add("active")
+    if(right === true){
+        section[sn-1].classList.remove("active")
     }
-    else if(isPhotos){
-        homeSection.classList.add("inactive")
+    else if(left === true){
+        section[sn+1].classList.remove("active")
     }
+    switchSection()
 }
 
-let focusSettings = () => { 
-    sectionNumber = 1
-    multiSection = 0
-    isHome = false
-    isSettings = true
-    settingsSection.classList.add("active")
-    homeSection.classList.add("inactive")
-    moveMenu('-10%', '18%', '18%')
-    
-    if(isPhotos){
-        photoSection.classList.remove("active")
-    }
-}
-
-let focusPhotos = () => {
-    sectionNumber = 2
-    isSettings = false
-    isPhotos = true
-    settingsSection.classList.remove("active")
-    photoSection.classList.add("active")
-    moveMenu('22%', '32%', '39%')
-
-    if(isMusic){
-        musicSection.classList.remove("active")
+let switchSection = () =>{
+    multiSection = false
+    switch (sectionNumber) {
+        case 0:
+            moveMenu('-40%', 0, 0)
+            break
+        case 1:
+            moveMenu('-10%', '18%', '18%')
+            multiSection = true
+            break
+        case 2:
+            moveMenu('22%', '32%', '39%')
+            break
+        case 3:
+            moveMenu('50%', '47%', '60%')
+            break
+        case 4:
+            moveMenu('76%', '62%', '77%')
+            break
+        case 5:
+            moveMenu('100%', '77%', '97%')
+            break
     }
 }
 
-let focusMusic = () =>{
-    sectionNumber = 3
-    isPhotos = false
-    isMusic = true
-    photoSection.classList.remove("active")
-    musicSection.classList.add("active")
-    moveMenu('50%', '47%', '60%')
-
-    if(isVideo){
-        videoSection.classList.remove("active")
-    }
-}
-
-let focusVideo = () =>{
-    sectionNumber = 4
-    isMusic = false
-    isVideo = true
-    musicSection.classList.remove("active")
-    videoSection.classList.add("active")
-    moveMenu('76%', '62%', '77%')
-
-    if(isGame){
-        gameSection.classList.remove("active")
-    }
-}
-
-let focusGame = () =>{
-    sectionNumber = 5
-    isVideo = false
-    isGame = true
-    videoSection.classList.remove("active")
-    gameSection.classList.add("active") 
-    moveMenu('100%', '77%', '97%')
-}
-
-let focusSubOne = () =>{
-    isSubOne = true
-    isSubTwo = false
-    submenuTwo[sectionNumber].classList.remove("active")
-    submenuOne[sectionNumber].classList.remove("inactive")
-}
-
-let focusSubTwo = () =>{
-    if(sectionNumber === 1){
-        if (isSubThree) {
-            submenuThree[multiSection].classList.remove("active")
-            submenuOne[sectionNumber].classList.remove("gotop")
-        }
-    }
-    isSubOne = false
-    isSubTwo = true
-    isSubThree = false
-    submenuTwo[sectionNumber].classList.add("active")
-    submenuOne[sectionNumber].classList.add("inactive")
-}
-
-let focusSubThree = () =>{
-    if(sectionNumber === 1){
-        isSubThree = true
-        isSubTwo = false
-        submenuThree[multiSection].classList.add("active")
-        submenuTwo[sectionNumber].classList.remove("active")
-        submenuOne[sectionNumber].classList.add("gotop")
+let focusSubMenu = (sn, sub, down, up) =>{
+    switch(sub){
+        case 0:
+            if(up){
+                submenu[sub+1][sn].classList.remove("active")
+                submenu[sub][sn].classList.remove("inactive")
+            }
+            break
+        case 1:
+            if(down){
+                submenu[sub-1][sn].classList.add("inactive")
+                submenu[sub][sn].classList.add("active")
+            }
+            else if(up){
+                if(multiSection){
+                    submenu[sub+1][sn-1].classList.remove("active")
+                    submenu[sub-1][sn].classList.remove("gotop")
+                    submenu[sub][sn].classList.add("active")
+                }
+            }
+        case 2:
+            if(down){
+                if (multiSection) {
+                    submenu[sub-2][sn].classList.add("gotop")
+                    submenu[sub-1][sn].classList.remove("active")
+                    submenu[sub][sn - 1].classList.add("active")
+                }
+            }
+            break
+        default:
+            break
     }
 }
 
@@ -209,78 +158,53 @@ document.body.addEventListener('keydown', (e) =>{
     if(e.key === 'ArrowDown'){
         navSound.play()
         e.preventDefault()
-        isSubOne = false
-        if(!isSubTwo){
-            focusSubTwo()
+        subsection++
+        if(subsection < 0){
+            subsection = 0
         }
-
-        else if(sectionNumber === 1){
-            if (isSubTwo && !isSubOne) {
-                focusSubThree()
-            }
-        } 
+        else if (subsection > 2){
+            subsection = 2
+        }
+        focusSubMenu(sectionNumber, subsection, true, false)
     }
 
     else if(e.key === 'ArrowUp'){
         navSound.play()
         e.preventDefault()
-        if(isSubThree && !isSubOne){
-            focusSubTwo()
+        subsection--
+        if (subsection < 0) {
+            subsection = 0
         }
-
-        else if(isSubTwo && !isSubOne){
-            focusSubOne()
+        else if (subsection > 2) {
+            subsection = 2
         }
+        focusSubMenu(sectionNumber, subsection, false, true)
     }
 
     else if(e.key === 'ArrowRight'){
         navSound.play()
         e.preventDefault()
-        if(isHome && !isSettings){
-            focusSettings()
+        sectionNumber++
+        if(sectionNumber<0){
+            sectionNumber = 0
         }
-        else if(isSettings && !isHome){
-            focusPhotos()
+        else if(sectionNumber >5){
+            sectionNumber = 5
         }
-
-        else if(isPhotos && !isSettings){
-            focusMusic()
-        }
-
-        else if(isMusic && !isPhotos){
-            focusVideo()
-        }
-
-        else if(isVideo && !isMusic){
-            focusGame()
-        }
+        focusSection(sectionNumber, true, false)
     }
 
     else if(e.key === 'ArrowLeft'){
         navSound.play()
         e.preventDefault()
-        if(isGame && !isVideo){
-            focusVideo()
+        sectionNumber--
+        if (sectionNumber < 0) {
+            sectionNumber = 0
         }
-
-        else if(isVideo && !isMusic){
-            focusMusic()
+        else if (sectionNumber > 5) {
+            sectionNumber = 5
         }
-
-        else if(isMusic && !isPhotos){
-            focusPhotos()
-        }
-
-        else if(isPhotos && !isSettings){
-            focusSettings()
-            settingsSection.style.marginLeft = null
-        }
-
-        else if(isSettings && !isHome){
-            focusHome()
-            homeSection.classList.remove("inactive")
-            xmbMain.style.marginRight = null;
-        }
+        focusSection(sectionNumber, false, true)
     }
 })
 

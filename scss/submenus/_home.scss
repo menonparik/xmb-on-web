@@ -1,1 +1,18 @@
 @use "../abstract/" as *;
+
+.xmb-title.homeMenu.active{
+    .xmb-contents{
+        .submenu.one{
+            &.active{
+                .about-bg{
+                    opacity: 1;
+                }
+            }
+            &.inactive{
+                .about-bg{
+                    opacity: 0;
+                }
+            }
+        }
+    }
+}

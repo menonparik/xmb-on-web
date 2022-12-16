@@ -91,22 +91,32 @@ body {
   font-size: 18px;
 }
 
-.xmb-title.homeMenu.active .titletext {
-  margin-top: -10px;
-}
-.xmb-title.homeMenu.active.inactive {
+.xmb-title.homeMenu {
   transition: margin-left 200ms;
 }
-.xmb-title.homeMenu.active.inactive img {
+.xmb-title.homeMenu img {
   scale: 0.8;
   opacity: 0.6;
 }
-.xmb-title.homeMenu.active.inactive .titletext {
+.xmb-title.homeMenu .titletext {
   display: none;
 }
-.xmb-title.homeMenu.active.inactive .xmb-contents {
+.xmb-title.homeMenu .xmb-contents {
   opacity: 0;
   transition: opacity 0.2s ease-in-out;
+}
+.xmb-title.homeMenu.active img {
+  scale: 1;
+  opacity: 0.85;
+}
+.xmb-title.homeMenu.active .titletext {
+  display: inherit;
+}
+.xmb-title.homeMenu.active .xmb-contents {
+  opacity: 1;
+}
+.xmb-title.homeMenu.active .titletext {
+  margin-top: -10px;
 }
 
 .xmb-title.settings {
@@ -187,7 +197,7 @@ body {
   transition: opacity 0.2s ease-in-out;
 }
 .xmb-title.messages.active {
-  margin-left: 75px;
+  margin-left: 60px;
   transition: all 300ms ease-in-out;
 }
 .xmb-title.messages.active img {
@@ -201,11 +211,11 @@ body {
   opacity: 1;
 }
 .xmb-title.messages.active .xmb-contents {
-  margin-right: 54px;
+  margin-right: 24px;
 }
 
 .xmb-title.videos {
-  margin-left: 70px;
+  margin-left: 55px;
 }
 .xmb-title.videos img {
   scale: 0.8;
@@ -422,6 +432,13 @@ body {
   scale: 1;
 }
 
+.xmb-title.homeMenu.active .xmb-contents .submenu.one.active .about-bg {
+  opacity: 1;
+}
+.xmb-title.homeMenu.active .xmb-contents .submenu.one.inactive .about-bg {
+  opacity: 0;
+}
+
 .xmb-title.settings .xmb-contents .submenu.one {
   margin-top: 50px;
   margin-bottom: 20px;
@@ -527,6 +544,9 @@ body {
   opacity: 1;
 }
 
+.xmb-title.music .xmb-contents {
+  margin-right: 25px !important;
+}
 .xmb-title.music .xmb-contents .submenu.one {
   margin-left: 10px;
   padding-bottom: 20px;
